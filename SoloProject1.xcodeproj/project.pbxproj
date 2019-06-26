@@ -12,6 +12,12 @@
 		85A600C022C3C90E00A65132 /* SoloProject1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 85A600BE22C3C90E00A65132 /* SoloProject1.xcdatamodeld */; };
 		85A600C222C3C91100A65132 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85A600C122C3C91100A65132 /* Assets.xcassets */; };
 		85A600C522C3C91100A65132 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 85A600C322C3C91100A65132 /* LaunchScreen.storyboard */; };
+		85A600D322C3D42800A65132 /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600D222C3D42800A65132 /* OverviewViewController.swift */; };
+		85A600D522C3D55C00A65132 /* IconCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600D422C3D55C00A65132 /* IconCollectionViewCell.swift */; };
+		85A600DB22C3E1AC00A65132 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600DA22C3E1AC00A65132 /* Cell.swift */; };
+		85A600DD22C3E1C100A65132 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600DC22C3E1C100A65132 /* CellController.swift */; };
+		85A600DF22C3F95C00A65132 /* searchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600DE22C3F95C00A65132 /* searchData.swift */; };
+		85A600E122C4220B00A65132 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600E022C4220B00A65132 /* MenuTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		85A600C122C3C91100A65132 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85A600C422C3C91100A65132 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		85A600C622C3C91100A65132 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85A600D222C3D42800A65132 /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OverviewViewController.swift; path = ../../Views/OverviewViewController.swift; sourceTree = "<group>"; };
+		85A600D422C3D55C00A65132 /* IconCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconCollectionViewCell.swift; sourceTree = "<group>"; };
+		85A600DA22C3E1AC00A65132 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		85A600DC22C3E1C100A65132 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
+		85A600DE22C3F95C00A65132 /* searchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchData.swift; sourceTree = "<group>"; };
+		85A600E022C4220B00A65132 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				85A600BE22C3C90E00A65132 /* SoloProject1.xcdatamodeld */,
+				85A600DA22C3E1AC00A65132 /* Cell.swift */,
+				85A600DE22C3F95C00A65132 /* searchData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,6 +115,9 @@
 		85A600D022C3D00200A65132 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				85A600D222C3D42800A65132 /* OverviewViewController.swift */,
+				85A600D422C3D55C00A65132 /* IconCollectionViewCell.swift */,
+				85A600E022C4220B00A65132 /* MenuTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -108,6 +125,7 @@
 		85A600D122C3D00700A65132 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				85A600DC22C3E1C100A65132 /* CellController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -185,6 +203,12 @@
 			files = (
 				85A600C022C3C90E00A65132 /* SoloProject1.xcdatamodeld in Sources */,
 				85A600B822C3C90E00A65132 /* AppDelegate.swift in Sources */,
+				85A600E122C4220B00A65132 /* MenuTableViewCell.swift in Sources */,
+				85A600DB22C3E1AC00A65132 /* Cell.swift in Sources */,
+				85A600DD22C3E1C100A65132 /* CellController.swift in Sources */,
+				85A600D322C3D42800A65132 /* OverviewViewController.swift in Sources */,
+				85A600D522C3D55C00A65132 /* IconCollectionViewCell.swift in Sources */,
+				85A600DF22C3F95C00A65132 /* searchData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +356,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YY8J3FPYX8;
-				INFOPLIST_FILE = SoloProject1/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SoloProject1/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -350,7 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YY8J3FPYX8;
-				INFOPLIST_FILE = SoloProject1/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/SoloProject1/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
