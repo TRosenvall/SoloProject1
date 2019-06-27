@@ -11,9 +11,11 @@ import UIKit
 class Cell {
     let icon: UIImage
     let rate: Int
+    let cost: Int
     
-    init( icon: UIImage, rate: Int ) {
+    init( icon: UIImage, rate: Int, cost: Int = 0 ) {
         self.icon = icon
         self.rate = rate
+        self.cost = cost
     }
 }

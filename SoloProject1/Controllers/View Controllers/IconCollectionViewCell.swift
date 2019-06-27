@@ -8,7 +8,22 @@
 
 import UIKit
 
+protocol IconButtonTappedDelegate: class {
+    func iconButtonTappedCell(_ sender: IconCollectionViewCell, menuTapped: Bool)
+}
+
 class IconCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var iconCell: UIButton!
+    
+    weak var delegate: IconButtonTappedDelegate?
+    
+    @IBAction func iconCellTapped(_ sender: Any) {
+        if let assignedDelegate = delegate {
+            let menuTapped = CellController.sharedInstance.menuButtonTapped
+            assignedDelegate.iconButtonTappedCell(self, menuTapped: menuTapped)
+        }
+    }
+    
+    
 }

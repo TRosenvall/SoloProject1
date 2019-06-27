@@ -18,6 +18,7 @@
 		85A600DD22C3E1C100A65132 /* CellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600DC22C3E1C100A65132 /* CellController.swift */; };
 		85A600DF22C3F95C00A65132 /* searchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600DE22C3F95C00A65132 /* searchData.swift */; };
 		85A600E122C4220B00A65132 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600E022C4220B00A65132 /* MenuTableViewCell.swift */; };
+		85A600E322C4B99C00A65132 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A600E222C4B99C00A65132 /* UIImageExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		85A600DC22C3E1C100A65132 /* CellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellController.swift; sourceTree = "<group>"; };
 		85A600DE22C3F95C00A65132 /* searchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchData.swift; sourceTree = "<group>"; };
 		85A600E022C4220B00A65132 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		85A600E222C4B99C00A65132 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				85A600BE22C3C90E00A65132 /* SoloProject1.xcdatamodeld */,
 				85A600DA22C3E1AC00A65132 /* Cell.swift */,
 				85A600DE22C3F95C00A65132 /* searchData.swift */,
+				85A600E222C4B99C00A65132 /* UIImageExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -206,6 +209,7 @@
 				85A600E122C4220B00A65132 /* MenuTableViewCell.swift in Sources */,
 				85A600DB22C3E1AC00A65132 /* Cell.swift in Sources */,
 				85A600DD22C3E1C100A65132 /* CellController.swift in Sources */,
+				85A600E322C4B99C00A65132 /* UIImageExtension.swift in Sources */,
 				85A600D322C3D42800A65132 /* OverviewViewController.swift in Sources */,
 				85A600D522C3D55C00A65132 /* IconCollectionViewCell.swift in Sources */,
 				85A600DF22C3F95C00A65132 /* searchData.swift in Sources */,

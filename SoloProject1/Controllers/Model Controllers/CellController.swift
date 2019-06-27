@@ -16,10 +16,16 @@ class CellController {
     let notification = Notification(name: .init("CellsLoaded"))
     
     var currIndex: Int = 0
+    var defaultImage: UIImage = UIImage(named: "blank")!
+    lazy var lastMenuCellTapped: Cell = Cell(icon: defaultImage, rate: 1)
+    var menuButtonTapped: Bool = false
     
     private init() {
         var tempCellHolding: [Cell] = []
         var tempHolding: [Cell] = []
+        var shadowHolding: [Cell] = []
+        var finalHolding: [Cell] = []
+        var finalShadow: [Cell] = []
         let dg = DispatchGroup()
         for _ in 0...104 {
             dg.enter()
@@ -39,16 +45,22 @@ class CellController {
                 guard let unwrappedData = searchData else {dg.leave(); return}
                 self.fetchCell(indexNumber: x, searchData: unwrappedData, completion: { (cell) in
                     guard let newCell = cell else {dg.leave(); return}
-                    let tempCell = Cell(icon: newCell.icon, rate: 2^(x-1) )
+                    let tempCell = Cell(icon: newCell.icon, rate: Int(pow(Double(2), Double(x))), cost: Int(pow(Double(x),Double(x))) )
+                    guard let shadowImage = newCell.icon.maskWithColor(color: .black) else {dg.leave();return}
+                    let tempCellShadow = Cell(icon: shadowImage, rate: Int(pow(Double(2), Double(x))), cost: Int(pow(Double(x),Double(x))) )
+                    shadowHolding.append(tempCellShadow)
                     tempHolding.append(tempCell)
+                    finalHolding = tempHolding.sorted(by: { $0.rate < $1.rate })
+                    finalShadow = shadowHolding.sorted(by: { $0.rate < $1.rate })
                     dg.leave()
                 })
             }
         }
-        
         dg.notify(queue: .main) {
             self.cells.append(contentsOf: tempCellHolding)
-            self.tableView.append(contentsOf: tempHolding)
+            self.tableView.append(contentsOf: finalShadow)
+            self.tableViewShadow.append(contentsOf: finalShadow)
+            self.tableViewLight.append(contentsOf: finalHolding)
         }
     }
     
@@ -65,6 +77,18 @@ class CellController {
         }
     }
     
+    var tableViewShadow: [Cell] = [] {
+        didSet {
+            NotificationCenter.default.post(notification)
+        }
+    }
+    
+    var tableViewLight: [Cell] = [] {
+        didSet {
+            NotificationCenter.default.post(notification)
+        }
+    }
+    
     // CRUD Functions
     func fetchSearchData (indexNumber: Int, completion: @escaping (SearchData?) -> Void) {
         var searchTerm: String
@@ -75,37 +99,42 @@ class CellController {
         let APIKeyQueryItem = URLQueryItem(name: "key", value: "12884186-a3bc29b440f4c9456ce2bea39")
         switch indexNumber {
         case 0:
-            searchTerm = "Transparent+Square"
+            let rand = Int.random(in: 0...1)
+            if rand == 0 {
+                searchTerm = "Shrub"
+            } else {
+                searchTerm = "Boulder"
+            }
         case 1:
-            searchTerm = "House"
+            searchTerm = "Grassland"
         case 2:
-            searchTerm = "Farm"
+            searchTerm = "Forest"
         case 3:
-            searchTerm = "Factory"
+            searchTerm = "Mountain"
         case 4:
-            searchTerm = "Oilrig"
+            searchTerm = "Farm"
         case 5:
-            completion(nil); return
+            searchTerm = "House"
         case 6:
-            completion(nil); return
+            searchTerm = "Mansion"
         case 7:
-            completion(nil); return
+            searchTerm = "Factory"
         case 8:
-            completion(nil); return
+            searchTerm = "Oilrig"
         case 9:
-            completion(nil); return
+            searchTerm = "Skyscraper"
         case 10:
-            completion(nil); return
+            searchTerm = "Monument"
         case 11:
-            completion(nil); return
+            searchTerm = "Space+Station"
         case 12:
-            completion(nil); return
+            searchTerm = "Planet"
         case 13:
-            completion(nil); return
+            searchTerm = "Solar+System"
         case 14:
-            completion(nil); return
+            searchTerm = "Galaxy"
         case 15:
-            completion(nil); return
+            searchTerm = "Universe"
         default:
             completion(nil); return
         }
@@ -133,46 +162,15 @@ class CellController {
     }
     
     func fetchCell (indexNumber: Int, searchData: SearchData, completion: @escaping (Cell?) -> Void) {
-        var rate: Int = 0
+        var rate: Int
+        if indexNumber == 0{
+            rate = 1
+        } else {
+            rate = Int(pow(Double(2), Double(indexNumber)))
+        }
         let randomNumber = Int.random(in: 0...searchData.hits.count - 1)
         let hit = searchData.hits[randomNumber]
         let url = hit.largeImageURL
-        switch indexNumber {
-        case 0:
-            rate = 0
-        case 1:
-            rate = 1
-        case 2:
-            rate = 2
-        case 3:
-            rate = 4
-        case 4:
-            rate = 8
-        case 5:
-            rate = 16
-        case 6:
-            rate = 32
-        case 7:
-            rate = 64
-        case 8:
-            rate = 128
-        case 9:
-            rate = 256
-        case 10:
-            rate = 512
-        case 11:
-            rate = 1024
-        case 12:
-            rate = 2048
-        case 13:
-            rate = 4096
-        case 14:
-            rate = 8192
-        case 15:
-            rate = 16384
-        default:
-            completion(nil); return
-        }
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -183,5 +181,10 @@ class CellController {
                 completion(cell); return
             }
             }.resume()
+    }
+    
+    // Check if two cells are equal - This is equatable, but it wasn't calling before for some reason.
+    func sameCell (lhs: Cell, rhs: Cell) -> Bool {
+        return lhs.cost == rhs.cost && lhs.icon == rhs.icon && lhs.rate == rhs.rate
     }
 }
